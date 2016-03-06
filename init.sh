@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 target_dir=$1
 
@@ -30,8 +30,8 @@ clone_dj(){
   git clone https://github.com/vilus/stepic_dj $target_dir
 }
 
+clone_dj
 mkdirs
 deploy
-clone_dj
 #nginx_configure
 echo "All done"
