@@ -26,7 +26,12 @@ nginx_configure(){
   sudo /etc/init.d/nginx restart
 }
 
+clone_dj(){
+  git clone https://github.com/vilus/stepic_dj $target_dir
+}
+
 mkdirs
 deploy
-nginx_configure
+clone_dj
+#nginx_configure
 echo "All done"
