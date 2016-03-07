@@ -30,8 +30,19 @@ clone_dj(){
   git clone https://github.com/vilus/stepic_dj $target_dir
 }
 
+prep_db(){
+  echo "prep_db"
+  mysql -uroot -e "create database stepic_db"
+  mysql -uroot -e "CREATE USER 'stepic'@'%' IDENTIFIED BY '1q2w3e'"
+  mysql -uroot -e "GRANT ALL ON stepic_db.* TO 'stepic'@'%' IDENTIFIED BY '1q2w3e'"
+  mysql -uroot -e "GRANT ALL ON stepic_db.* TO 'stepic'@'localhost' IDENTIFIED BY '1q2w3e'"
+  mysql -uroot -e "FLUSH PRIVILEGES"
+}
+
+prep_db
 clone_dj
-mkdirs
-deploy
+#mkdirs
+#deploy
+pip install --upgrade django
 #nginx_configure
 echo "All done"
