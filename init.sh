@@ -37,6 +37,9 @@ prep_db(){
   mysql -uroot -e "GRANT ALL ON stepic_db.* TO 'stepic'@'%' IDENTIFIED BY '1q2w3e'"
   mysql -uroot -e "GRANT ALL ON stepic_db.* TO 'stepic'@'localhost' IDENTIFIED BY '1q2w3e'"
   mysql -uroot -e "FLUSH PRIVILEGES"
+  pip install mysql-python
+  sudo apt-get install python-dev libmysqlclient-dev
+  pip install mysqlclient
 }
 
 prep_db
