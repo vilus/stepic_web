@@ -2,6 +2,7 @@
 
 target_dir=$1
 
+#rm -fr $target_dir 
 
 mkdirs(){
   echo "mkdirs"
@@ -32,13 +33,15 @@ clone_dj(){
 
 prep_db(){
   echo "prep_db"
+  /etc/init.d/mysql start
   mysql -uroot -e "create database stepic_db"
   mysql -uroot -e "CREATE USER 'stepic'@'%' IDENTIFIED BY '1q2w3e'"
   mysql -uroot -e "GRANT ALL ON stepic_db.* TO 'stepic'@'%' IDENTIFIED BY '1q2w3e'"
   mysql -uroot -e "GRANT ALL ON stepic_db.* TO 'stepic'@'localhost' IDENTIFIED BY '1q2w3e'"
   mysql -uroot -e "FLUSH PRIVILEGES"
+  apt-get install libmysqlclient-dev
+  apt-get install python-dev libmysqlclient-dev
   pip install mysql-python
-  sudo apt-get install python-dev libmysqlclient-dev
   pip install mysqlclient
 }
 
