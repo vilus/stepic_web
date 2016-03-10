@@ -28,12 +28,17 @@ nginx_configure(){
 }
 
 clone_dj(){
-  git clone https://github.com/vilus/stepic_dj $target_dir
+  cd $target_dir
+  git init
+  git remote add origin https://github.com/vilus/stepic_dj
+  git pull origin master
+
   pip install PyYAML
   pip install pytz
   python ${target_dir}/manage.py makemigrations
   python ${target_dir}/manage.py migrate
-#  python ${target_dir}/manage.py loaddata init 
+#  python ${target_dir}/manage.py loaddata init
+  cd - 
 }
 
 prep_db(){
